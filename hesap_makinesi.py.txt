@@ -1,0 +1,25 @@
+#HESAP MAKINESI
+
+
+while True:
+    islem = input("Islemi seciniz (cikis icin q'ya basiniz)(+, -, *, /, **) : ")  #try-except kullanilmali
+
+    if islem == 'q':
+        break
+
+    a = int(input("Ilk sayiyi giriniz : "))
+    b = int(input("Ikinci sayiyi giriniz : "))
+
+    if islem == '+':
+        print(a + b)
+    elif islem == '-':
+        print(a - b)
+    elif islem == '*':
+        print(a * b)
+    elif islem == '/':
+        if b == 0:
+            print("Tanimsiz")
+        else:
+            print(a / b)
+    elif islem == '**':
+        print(a ** b)
