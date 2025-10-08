@@ -1,0 +1,66 @@
+#BANKA SIMULATION
+
+def bakiyeGoruntule(bakiye):
+    print(f"Hesabinizin guncel bakiyesi : {bakiye:.2f} TL\n")
+    return bakiye                                #Bakiye parametresi fonkisyon disinda da deger dondurebilmesi icin bakiye degiskenini return ile disari dondurdum, aynisi asagidaki diger fonksiyonlar icin de gecerli
+
+def paraYatir(bakiye):
+    try:
+        yatir = float(input("Lutfen yatirmak istediginiz tutari giriniz : "))
+        if yatir <= 0:                            #Kullanici eğer negatif bir tutar yatirirsa mantık hatasi olur ve kod coker bunun olmamasi adina try-except koydum
+            print("Lutfen gecerli tutar giriniz!")
+        else:
+            bakiye += yatir
+            print("Hesabinizin guncel bakiyesi : ", bakiye)
+    except ValueError:
+        print("Yanlis tutar girdiniz !")
+    return bakiye
+
+def paraCekme(bakiye):
+    print("Hesabinizdaki bakiye : ", bakiye)
+    try:
+        cekme = float(input("Lutfen cekmek istediginiz tutari giriniz : "))
+        if cekme > bakiye:                         #Mantik hatasi olmamasi adina eğer kullanici bakiyesinden fazla tutar cekmek isterse hata mesaji isle karsilasiyor
+            print("Yetersiz bakiye!")
+        elif cekme <= 0:                           #Kullanici eğer negatif bir tutar cekmek isterse hata mesaji ile karsilasiyor
+            print("Lutfen gecerli tutar giriniz!")
+        else:
+            bakiye -= cekme
+        print("Hesabinizin guncel bakiyesi : ", bakiye)
+    except ValueError:
+        print("Yanlis tutar girdiniz !")
+    return bakiye
+
+print("Merhaba, Bankamizin Internet Bankaciligina Hos Geldiniz!")
+
+try:
+    bakiye = float(input("Lutfen baslangic bakiyenizi giriniz : ")) #Eger sayi harici bir karakter vs. girilirse kod cokmesin diye try-except koydum
+except ValueError:
+    print("Yanlis tutar girdiniz !")
+    bakiye = 0
+
+while True:
+    try:
+        secim = int(input('''                   
+    Lutfen yapmak istediginiz islemi seciniz:
+    1- Bakiye Goruntuleme                                            
+    2- Para Yatirma                      
+    3- Para Cekme
+    4- Cikis Yapma                              
+    >'''))                  #Burada cok satirli input aldim
+    except ValueError:                             
+        print("Hatali secim girdiniz, lutfen tekrar deneyin!")
+        continue            #Eğer ValueError olursa kod donugunun basindan tekrar calisicak
+
+    if secim == 1:
+        bakiye = bakiyeGoruntule(bakiye)
+        
+    elif secim == 2:
+        bakiye = paraYatir(bakiye)
+
+    elif secim == 3:
+        bakiye = paraCekme(bakiye)
+    
+    elif secim == 4:
+        print(f"Basariyla cikis yaptiniz. Son bakiyeniz : {bakiye:.2f} TL")
+        break
