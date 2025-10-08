@@ -1,0 +1,34 @@
+#HESAP MAKINESI
+
+while True:
+    
+    islem = input("Islemi seciniz (cikis icin q'ya basiniz)(+, -, *, /, **) : ")  #try-except kullanilmali
+    
+    if islem == 'q':
+        print("Basariyla cikis yaptiniz!")
+        break
+
+    if islem not in ["+", "-", "*", "/", "**"]:
+        print("Gecersiz islem!")
+        continue
+
+    try:    
+        a = int(input("Ilk sayiyi giriniz : "))
+        b = int(input("Ikinci sayiyi giriniz : "))
+    except ValueError:
+        print("Lutfen sadece sayi giriniz!")
+        continue
+
+    if islem == '+':
+        print(f"{a} + {b} = {a + b}")
+    elif islem == '-':
+        print(f"{a} - {b} = {a - b}")
+    elif islem == '*':
+        print(f"{a} * {b} = {a * b}")
+    elif islem == '/':
+        if b == 0:
+            print("Tanimsiz")
+        else:
+            print(f"{a} / {b} = {a / b}")
+    elif islem == '**':
+        print(f"{a} ** {b} = {a ** b}")
