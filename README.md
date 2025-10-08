@@ -1,1 +1,1 @@
-﻿# python_sayi_tahmin_oyunu
+﻿# basic python projelerim
